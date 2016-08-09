@@ -7,7 +7,7 @@ smtp2tg is a tiny application to relay messages via SMTP to a Telegram User.
 You will need a Telegram Bot API Key which you can get from talking to [@BotFather](https://telegram.me/BotFather)
 
 ---
-#### 0.0.1 (2016-07-04)
+#### 0.0.1 (2016-08-09)
 
 This initial version
 
@@ -21,7 +21,4 @@ This initial version
       -v /path/to/smtp2tg.toml:/config/smtp2tg.toml:ro \
       -p 2525:25 \
       b3vis/smtp2tg
-
-
-
 ---
