@@ -18,7 +18,7 @@ This initial version
     $ docker create \
       --name=smtp2tg \
       --restart=always \
-      -v /path/to/smtp2tg.toml:/config/smtp2tg.toml:ro \
+      -v /path/to/config:/config:ro \
       -p 2525:25 \
-      b3vis/smtp2tg
+      b3vis/docker-smtp2tg
 ---
