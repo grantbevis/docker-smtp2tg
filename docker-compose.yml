@@ -1,0 +1,9 @@
+version: "2"
+services:
+  smtp2tg:
+    image: b3vis/docker-smtp2tg
+    restart: always
+    volumes:
+      - /path/to/config/smtp2tg.toml:/config/smtp2tg.toml:ro
+    ports:
+      - "2525:25"
