@@ -9,9 +9,9 @@ smtp2tg is a tiny application to relay messages via SMTP to a Telegram User.
 * Create your own smtp2tg.toml from my example and update the path in either the run command or my compose example.
 
 ---
-#### 0.0.2 (2016-10-28)
+#### 0.0.3
 
-Added docker-compose and config example
+Dramatically reduced image size
 
 ---
 #### smtp2tg.toml Example
