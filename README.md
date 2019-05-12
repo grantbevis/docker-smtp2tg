@@ -35,11 +35,11 @@ debug = true
 ```
 
 #### Example Run Command
-
+```
     $ docker run \
   --name=smtp2tg \
   --restart=always \
   -v $(pwd)/smtp2tg.toml:/config/smtp2tg.toml:ro \
   -p 25:25 \
   dungtri/smtp2tg
-
+```
