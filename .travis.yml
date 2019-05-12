@@ -11,6 +11,9 @@ env:
   - DOCKER_ARCH=arm64
   - DOCKER_ARCH=arm
 
+before_install:
+ - chmod +x /build/build.sh
+
 script:
 - ./build/travis_build.sh
 
