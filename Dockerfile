@@ -1,6 +1,4 @@
 ARG BASE=alpine
-FROM $BASE
-
 FROM golang:$BASE AS build
 
 ARG arch=arm
@@ -11,7 +9,8 @@ COPY qemu/qemu-$ARCH-static* /usr/bin/
 RUN apk add git --no-cache && \
     git clone https://github.com/ircop/smtp2tg /go/src/smtp2tg && \
     go get gopkg.in/telegram-bot-api.v4 && \
-    go get github.com/spf13/viper
+    go get github.com/spf13/viper && \
+    go get github.com/veqryn/go-email/email
 RUN go build /go/src/smtp2tg/main.go
 
 FROM $BASE
