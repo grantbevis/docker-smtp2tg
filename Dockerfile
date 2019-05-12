@@ -1,11 +1,5 @@
-ARG BASE=alpine
-FROM golang:$BASE AS build
-
-ARG arch=arm
-ENV ARCH=$arch
-
-COPY qemu/qemu-$ARCH-static* /usr/bin/
-
+FROM golang:alpine AS build
+MAINTAINER b3vis
 RUN apk add git --no-cache && \
     git clone https://github.com/ircop/smtp2tg /go/src/smtp2tg && \
     go get gopkg.in/telegram-bot-api.v4 && \
@@ -13,10 +7,9 @@ RUN apk add git --no-cache && \
     go get github.com/veqryn/go-email/email
 RUN go build /go/src/smtp2tg/main.go
 
-FROM $BASE
-COPY qemu/qemu-$ARCH-static* /usr/bin/
-COPY --from=build /go/main /usr/bin/smtp2tg
+FROM alpine:latest
+COPY --from=build /go/main /usr/local/bin/smtp2tg
 RUN apk add ca-certificates --no-cache
 EXPOSE 25
 VOLUME /config
-CMD ["/usr/bin/smtp2tg","-c","/config/smtp2tg.toml"]
+CMD ["/usr/local/bin/smtp2tg","-c","/config/smtp2tg.toml"]
