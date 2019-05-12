@@ -36,24 +36,10 @@ debug = true
 
 #### Example Run Command
 
-    $ docker create \
-      --name=smtp2tg \
-      --restart=always \
-      -v /path/to/config:/config:ro \
-      -p 2525:25 \
-      b3vis/docker-smtp2tg
+    $ docker run \
+  --name=smtp2tg \
+  --restart=always \
+  -v $(pwd)/smtp2tg.toml:/config/smtp2tg.toml:ro \
+  -p 25:25 \
+  dungtri/smtp2tg
 
-#### Docker Compose Example
-```
-version: "2"
-services:
-  smtp2tg:
-    image: b3vis/docker-smtp2tg
-    restart: always
-    container_name: smtp2tg
-    volumes:
-      - /path/to/config/smtp2tg.toml:/config/smtp2tg.toml:ro
-    ports:
-      - "2525:25"
-```
----
